@@ -1,0 +1,101 @@
+swagger: "2.0"
+
+################################################################################
+#                              API Information                                 #
+################################################################################
+info:
+  version: 1.0.0
+  title: "Library - Swagger"
+  description: The Library API provides powerful online tools for educational institutions
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: W Brian Leonard
+    email: brianleonard@notyourbusiness.com
+    url: https://wbleonard.github.io/
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+    
+################################################################################
+#                  Host, Base Path, Schemes and Content Types                  #
+################################################################################      
+host: 140.86.40.251:8080
+basePath: /instructional/instructors
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+  
+################################################################################
+#                                   Parameters                                 #
+################################################################################
+parameters:
+  discipline:
+    name: discipline
+    in: path
+    description: Discipline of books to fetch
+    type: string
+    required: true
+    default: astronomy
+
+################################################################################
+#                                           Paths                              #
+################################################################################  
+paths:
+  /disciplines/{discipline}:
+    get:
+      description: |
+        Lists all top level resources
+      operationId: findResouces
+      parameters:
+        - $ref: '#/parameters/discipline'
+      responses:
+        200:
+          description: platform response
+          schema:
+            $ref: '#/definitions/Discipline'  
+
+################################################################################
+#                                 Definitions                                  #
+################################################################################
+definitions:
+  Discipline:
+    properties:
+      recordsFound: 
+        type: integer
+        description: The number of records found
+        example: 3
+      searchTerm:
+        type: string
+        description: The term used to perform the search
+        example: Astronomy
+      relaxed: 
+        type: boolean
+        description: Was the search strict or relaxed?
+        example: false
+      results: 
+        type: array
+        items: 
+          $ref: '#/definitions/Book'
+  Book:
+    properties:
+      title: 
+        type: string
+        description: The book title
+        example: The Cosmic Perspective, 2nd edition
+      authors:
+        type: array
+        description: The book's authors
+        items:
+          type: string
+          example: "Bennet"
+      publisher:
+        type: string
+        description: The book's publisher
+        example: Pearson Education
+      cover_image:
+        type: string
+        description: An HTTP link to an image of the book's cover
+        example: http://www.webassign.net/bdsvastro/BDSVastr02_cover_sm.jpg
