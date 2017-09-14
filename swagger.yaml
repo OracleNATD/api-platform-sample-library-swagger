@@ -5,7 +5,7 @@ swagger: "2.0"
 ################################################################################
 info:
   version: 1.0.0
-  title: "Library"
+  title: "Library - Swagger"
   description: The Library API provides powerful online tools for educational institutions.
   termsOfService: https://swagger.io/license/
   contact:
