@@ -6,8 +6,8 @@ swagger: "2.0"
 info:
   version: 1.0.0
   title: "Library - Swagger"
-  description: The Library API provides powerful online tools for educational institutions
-  termsOfService: http://swagger.io/terms/
+  description: The Library API provides powerful online tools for educational institutions.
+  termsOfService: https://swagger.io/license/
   contact:
     name: W Brian Leonard
     email: brianleonard@notyourbusiness.com
@@ -56,6 +56,8 @@ paths:
           description: platform response
           schema:
             $ref: '#/definitions/Discipline'  
+          examples: 
+            A$ref: '#/definitions/Discipline'
 
 ################################################################################
 #                                 Definitions                                  #
